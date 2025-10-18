@@ -5,11 +5,16 @@
 // `FooBarBaz` -> `foo-bar-baz`
 
 
-type KebabCase<S extends string> = S extends `${infer A}${infer Rest}` ? (
-    A extends Lowercase<A> 
-        ? `${A}${KebabCase<Rest>}`
-        : `-${Lowercase<A>}${KebabCase<Rest>}` 
-) : S
+type KebabCase<
+    S extends string,
+    IsFirst extends boolean = true>
+    = S extends `${infer A}${infer Rest}` ? (
+        A extends Lowercase<A>
+        ? `${A}${KebabCase<Rest, false>}`
+        : IsFirst extends true
+        ? `${Lowercase<A>}${KebabCase<Rest, false>}`
+        : `-${Lowercase<A>}${KebabCase<Rest, false>}`
+    ) : S
 
 type Text = KebabCase<"FooBarBaz">
 
