@@ -6,9 +6,9 @@
 
 
 type KebabCase<S extends string> = S extends `${infer A}${infer Rest}` ? (
-    Rest extends Capitalize<Rest>
-    ? `${Lowercase<A>}-${KebabCase<Uncapitalize<Rest>>}`
-    : `${Lowercase<A>}${KebabCase<Rest>}`
+    Rest extends Uncapitalize<Rest>
+    ? `${Lowercase<A>}${KebabCase<Rest>}`
+    : `${Lowercase<A>}-${KebabCase<Uncapitalize<Rest>>}`
 ) : S
 
 type Text = KebabCase<"FooBarBaz">
