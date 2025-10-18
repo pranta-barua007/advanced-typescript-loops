@@ -6,10 +6,12 @@
 
 
 type KebabCase<S extends string> = S extends `${infer A}${infer Rest}` ? (
-    A extends Uppercase<A> 
-        ? `-${Lowercase<A>}${KebabCase<Rest>}` 
-        : `${A}${KebabCase<Rest>}`
+    A extends Lowercase<A> 
+        ? `${A}${KebabCase<Rest>}`
+        : `-${Lowercase<A>}${KebabCase<Rest>}` 
 ) : S
+
+type Text = KebabCase<"FooBarBaz">
 
 import type { Equal, Expect } from "./type-utils"
 
