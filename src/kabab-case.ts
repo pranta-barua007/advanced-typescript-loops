@@ -16,6 +16,7 @@ type Text = KebabCase<"FooBarBaz">
 import type { Equal, Expect } from "./type-utils"
 
 type cases = [
+    Expect<Equal<KebabCase<"FooBarBazFooBarBazFooBarBazFooBarBazFooBarBazFooBarBazFooBarBaz">, "foo-bar-baz-foo-bar-baz-foo-bar-baz-foo-bar-baz-foo-bar-baz-foo-bar-baz-foo-bar-baz">>,
     Expect<Equal<KebabCase<"FooBarBaz">, "foo-bar-baz">>,
     Expect<Equal<KebabCase<"fooBarBaz">, "foo-bar-baz">>,
     Expect<Equal<KebabCase<"fooBARBaz">, "foo-b-a-r-baz">>,
