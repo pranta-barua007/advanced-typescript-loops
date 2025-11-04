@@ -1,6 +1,6 @@
 
 type Get<
-    Obj extends Record<PropertyKey, unknown>, 
+    Obj, 
     Key extends string
 > = Key extends keyof Obj ? Obj[Key] : never
 
